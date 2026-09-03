@@ -1160,3 +1160,11 @@ textarea:focus-visible {
 .hero-home .hero-subtitle {
   text-shadow: 0 2px 12px rgba(0, 0, 0);
 }
+
+/* Mobile Navbar Collapse Expanded */
+.collapse.navbar-collapse.show,
+.navbar-collapse.show {
+  padding-top: 5px;
+  margin-top: 10px;
+  border-top: 1px solid var(--color-border);
+}
