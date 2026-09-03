@@ -64,13 +64,68 @@ document.addEventListener("DOMContentLoaded", () => {
                 pauseOnMouseEnter: true,
             },
             pagination: {
-                el: '.swiper-pagination',
+                el: '.microgreens-swiper .swiper-pagination',
                 clickable: true,
             },
             navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
+                nextEl: '.microgreens-swiper .swiper-button-next',
+                prevEl: '.microgreens-swiper .swiper-button-prev',
             },
+        });
+    }
+
+    // Initialize Fresh Greens Video Swiper Slider
+    const freshGreensWrap = document.querySelector('.freshgreens-slider-wrap');
+    if (freshGreensWrap && typeof Swiper !== 'undefined') {
+        const freshSwiperEl = freshGreensWrap.querySelector('.freshgreens-swiper');
+
+        const playActiveSlideVideo = (swiper) => {
+            const allVideos = freshGreensWrap.querySelectorAll('video');
+            allVideos.forEach(v => {
+                v.pause();
+                v.muted = true;
+            });
+
+            const activeSlide = swiper.slides[swiper.activeIndex];
+            if (activeSlide) {
+                const video = activeSlide.querySelector('video');
+                if (video) {
+                    video.muted = true;
+                    video.currentTime = 0;
+                    const playPromise = video.play();
+                    if (playPromise !== undefined) {
+                        playPromise.catch(err => {
+                            console.log("Autoplay caught:", err);
+                        });
+                    }
+                }
+            }
+        };
+
+        const freshSwiper = new Swiper(freshSwiperEl, {
+            loop: true,
+            speed: 600,
+            autoplay: {
+                delay: 6000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+            },
+            pagination: {
+                el: '.freshgreens-swiper .swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.freshgreens-swiper .swiper-button-next',
+                prevEl: '.freshgreens-swiper .swiper-button-prev',
+            },
+            on: {
+                init: function () {
+                    playActiveSlideVideo(this);
+                },
+                slideChangeTransitionEnd: function () {
+                    playActiveSlideVideo(this);
+                }
+            }
         });
     }
 });
