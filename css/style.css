@@ -1133,7 +1133,7 @@ textarea:focus-visible {
   background-color: #0b150c;
   background-image: url('../assets/images/home-bg.png');
   background-size: cover;
-  background-position: center;
+  background-position: center right 20%;
   background-repeat: no-repeat;
 }
 
@@ -1145,9 +1145,9 @@ textarea:focus-visible {
   height: 100%;
   background: linear-gradient(
     135deg,
-    rgba(0, 0, 0, 0.28) 0%,
-    rgba(0, 0, 0, 0.18) 50%,
-    rgba(0, 0, 0, 0.12) 100%
+    rgba(0, 0, 0, 0.58) 0%,
+    rgba(0, 0, 0, 0.28) 50%,
+    rgba(0, 0, 0, 0.22) 100%
   );
   z-index: 1;
 }
@@ -1158,5 +1158,5 @@ textarea:focus-visible {
 }
 
 .hero-home .hero-subtitle {
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 2px 12px rgba(0, 0, 0);
 }
