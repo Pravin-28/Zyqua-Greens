@@ -3,6 +3,57 @@ console.log("Zyqua Greens main.js loaded");
 
 
 document.addEventListener("DOMContentLoaded", () => {
+    // Robust Hero Background Video playback handler for iPhone / iOS / Mobile browsers
+    const heroVideo = document.querySelector('.hero-bg-video');
+    if (heroVideo) {
+        heroVideo.muted = true;
+        heroVideo.defaultMuted = true;
+        heroVideo.playsInline = true;
+        heroVideo.setAttribute('muted', '');
+        heroVideo.setAttribute('playsinline', '');
+        heroVideo.setAttribute('webkit-playsinline', '');
+
+        const playHeroVideo = () => {
+            if (heroVideo.paused) {
+                const playPromise = heroVideo.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(() => {
+                        // Autoplay may be restricted (e.g. iOS Low Power Mode)
+                    });
+                }
+            }
+        };
+
+        // Attempt playback on various stages of loading
+        playHeroVideo();
+        heroVideo.addEventListener('loadedmetadata', playHeroVideo);
+        heroVideo.addEventListener('canplay', playHeroVideo);
+        heroVideo.addEventListener('loadeddata', playHeroVideo);
+
+        // Resume if user returns to tab/app on iPhone
+        document.addEventListener('visibilitychange', () => {
+            if (document.visibilityState === 'visible') {
+                playHeroVideo();
+            }
+        });
+
+        // Autoplay unlock fallback on first user interaction (touch, tap, scroll) for iOS Low Power Mode
+        const unlockMobileVideo = () => {
+            playHeroVideo();
+            if (!heroVideo.paused) {
+                window.removeEventListener('touchstart', unlockMobileVideo);
+                window.removeEventListener('touchend', unlockMobileVideo);
+                window.removeEventListener('click', unlockMobileVideo);
+                window.removeEventListener('scroll', unlockMobileVideo);
+            }
+        };
+
+        window.addEventListener('touchstart', unlockMobileVideo, { passive: true });
+        window.addEventListener('touchend', unlockMobileVideo, { passive: true });
+        window.addEventListener('click', unlockMobileVideo, { passive: true });
+        window.addEventListener('scroll', unlockMobileVideo, { passive: true });
+    }
+
     // Handle Contact Form Auto-Select via URL Params
     const contactReasonSelect = document.getElementById("contactReason");
     if (contactReasonSelect) {
