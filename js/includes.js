@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
             .then(res => res.text())
             .then(data => {
                 footerPlaceholder.innerHTML = data;
+                updateFooterTagline(footerPlaceholder);
             })
             .catch(err => console.error("Error loading footer:", err));
         promises.push(p2);
@@ -29,6 +30,33 @@ document.addEventListener("DOMContentLoaded", () => {
         document.dispatchEvent(new Event("partialsLoaded"));
     });
 });
+
+function updateFooterTagline(wrapper) {
+    const taglineEl = wrapper.querySelector(".footer-tagline");
+    if (!taglineEl) return;
+
+    if (wrapper.dataset && wrapper.dataset.tagline) {
+        taglineEl.textContent = wrapper.dataset.tagline;
+        return;
+    }
+    if (document.body.dataset && document.body.dataset.tagline) {
+        taglineEl.textContent = document.body.dataset.tagline;
+        return;
+    }
+
+    const path = window.location.pathname.toLowerCase();
+    const bodyClass = (document.body.className || "").toLowerCase();
+
+    if (bodyClass.includes("page-about") || path.includes("about")) {
+        taglineEl.textContent = "We believe the future of food begins with the way we choose to grow it.";
+    } else if (bodyClass.includes("page-products") || path.includes("products")) {
+        taglineEl.textContent = "Freshness you can see, quality you can trust, and goodness you can feel.";
+    } else if (bodyClass.includes("page-projects") || path.includes("projects")) {
+        taglineEl.textContent = "Creating a better connection between how food is grown and how it reaches your table.";
+    } else if (bodyClass.includes("page-team") || path.includes("team")) {
+        taglineEl.textContent = "Because when we grow with care, every harvest has the power to make a difference.";
+    }
+}
 
 
 
