@@ -21,9 +21,21 @@
 
     <main class="hero-home position-relative d-flex align-items-center">
         <!-- Hero Background Video with Image Fallback -->
-        <video id="hero-bg-video" class="hero-bg-video" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="assets/images/home-bg.png" disableRemotePlayback disablePictureInPicture controlsList="nodownload nofullscreen noremoteplayback">
+        <video id="hero-bg-video" class="hero-bg-video" src="assets/images/hero-bg.mp4" autoplay muted defaultMuted loop playsinline webkit-playsinline preload="auto" poster="assets/images/home-bg.png" disableRemotePlayback disablePictureInPicture controlsList="nodownload nofullscreen noremoteplayback">
             <source src="assets/images/hero-bg.mp4" type="video/mp4">
         </video>
+        <script>
+            (function() {
+                var v = document.getElementById('hero-bg-video');
+                if (v) {
+                    v.muted = true;
+                    v.defaultMuted = true;
+                    v.playsInline = true;
+                    var p = v.play();
+                    if (p !== undefined) { p.catch(function() {}); }
+                }
+            })();
+        </script>
 
         <!-- Dark Gradient Overlay for High Text Readability -->
         <div class="hero-overlay"></div>

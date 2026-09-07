@@ -4,38 +4,64 @@ console.log("Zyqua Greens main.js loaded");
 
 document.addEventListener("DOMContentLoaded", () => {
     // Hero Video Autoplay handler for iPhone / Safari / Mobile
-    const video = document.getElementById("hero-bg-video");
+    const video = document.getElementById("hero-bg-video") || document.querySelector(".hero-bg-video");
     if (video) {
         video.muted = true;
+        video.defaultMuted = true;
+        video.playsInline = true;
+        video.loop = true;
         video.setAttribute("muted", "");
         video.setAttribute("playsinline", "");
         video.setAttribute("webkit-playsinline", "");
+        video.setAttribute("loop", "");
 
         const playVideo = () => {
-            const promise = video.play();
-            if (promise !== undefined) {
-                promise.catch(() => {
-                    // iPhone/Safari blocked autoplay.
-                });
+            if (video.paused) {
+                const promise = video.play();
+                if (promise !== undefined) {
+                    promise.catch(() => {
+                        // iPhone/Safari low power mode policy
+                    });
+                }
             }
         };
 
         playVideo();
 
-        // Retry when Safari has loaded enough data
-        video.addEventListener("canplay", playVideo, { once: true });
-        video.addEventListener("loadedmetadata", playVideo, { once: true });
+        // Retry whenever Safari buffers enough data
+        video.addEventListener("loadeddata", playVideo);
+        video.addEventListener("canplay", playVideo);
+        video.addEventListener("canplaythrough", playVideo);
+        video.addEventListener("loadedmetadata", playVideo);
+
+        // Resume on page visibility or Safari back/forward navigation
+        window.addEventListener("pageshow", playVideo);
+        document.addEventListener("visibilitychange", () => {
+            if (document.visibilityState === "visible") {
+                playVideo();
+            }
+        });
+
+        // Loop guarantee for mobile Safari
+        video.addEventListener("ended", () => {
+            video.currentTime = 0;
+            playVideo();
+        });
 
         // Fallback on first touch/interaction for low power mode on iOS
         const unlockOnTouch = () => {
             playVideo();
             if (!video.paused) {
                 window.removeEventListener("touchstart", unlockOnTouch);
+                window.removeEventListener("touchend", unlockOnTouch);
                 window.removeEventListener("click", unlockOnTouch);
+                window.removeEventListener("scroll", unlockOnTouch);
             }
         };
         window.addEventListener("touchstart", unlockOnTouch, { passive: true });
+        window.addEventListener("touchend", unlockOnTouch, { passive: true });
         window.addEventListener("click", unlockOnTouch, { passive: true });
+        window.addEventListener("scroll", unlockOnTouch, { passive: true });
     }
 
     // Handle Contact Form Auto-Select via URL Params
