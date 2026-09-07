@@ -58,11 +58,11 @@ document.addEventListener("DOMContentLoaded", () => {
         new Swiper('.microgreens-swiper', {
             loop: true,
             speed: 600,
-            autoplay: {
-                delay: 4000,
-                disableOnInteraction: false,
-                pauseOnMouseEnter: true,
-            },
+            // autoplay: {
+            //     delay: 4000,
+            //     disableOnInteraction: false,
+            //     pauseOnMouseEnter: true,
+            // },
             pagination: {
                 el: '.microgreens-swiper .swiper-pagination',
                 clickable: true,

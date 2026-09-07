@@ -13,7 +13,10 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/jpeg" href="favicon.jpeg">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" /></head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <!-- Fancybox CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+</head>
 
 <body class="page-about">
     <div id="site-navbar" class="navbar-solid"></div>
@@ -24,8 +27,8 @@
             <div class="container-zg">
                 <div class="row">
                     <div class="col-lg-8">
-                        <span class="eyebrow d-block mb-3">Zyqua Greens</span>
-                        <h1 class="mb-4">A Farming Platform for Fresher, Cleaner, More Nutritious Food</h1>
+                        <span class="eyebrow d-block mb-3">About us</span>
+                        <h1 class="mb-4">Fresher, Cleaner, More Nutritious Food</h1>
                         <p class="body-large mb-3">Zyqua Greens is an agri-tech company. We design and run iAVS &mdash;
                             Integrated AquaVegeculture Systems &mdash; closed, soil-less farms where fish and plants
                             grow together in one water cycle. It's a cleaner, more space- and water-efficient way to
@@ -173,27 +176,49 @@
             <div class="container-zg">
                 <span class="eyebrow text-center d-block mb-5">Sustainability in Practice</span>
                 <div class="bento-grid">
-                    <!-- Item 1: Wide Anchor -->
+                    <!-- Item 1: Wide Anchor (Video) -->
                     <div class="bento-item bento-wide">
-                        <img src="assets/images/projects/commercial-iavs-farm/IMG_0165.jpg" alt="Resource Efficiency"
-                            class="bento-img">
+                        <a href="assets/images/efficiency.mp4" data-fancybox="bento-gallery" data-caption="Resource Efficiency &mdash; Maximizing output while minimizing water, land, and input use" class="bento-eye-btn" aria-label="View Video">
+                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </a>
+                        <video autoplay muted loop playsinline class="bento-img"
+                            poster="assets/images/projects/commercial-iavs-farm/IMG_0165.jpg">
+                            <source src="assets/images/efficiency.mp4" type="video/mp4">
+                        </video>
                         <div class="bento-content">
                             <h4 class="h5 font-heading text-white mb-2">Resource Efficiency</h4>
                             <p class="small mb-0 opacity-75">Maximizing output while minimizing water, land, and input
                                 use</p>
                         </div>
                     </div>
-                    <!-- Item 2: Square Tile -->
+                    <!-- Item 2: Square Tile (Video) -->
                     <div class="bento-item">
-                        <img src="assets/images/projects/commercial-iavs-farm/IMG_0151.jpg" alt="Zero Harmful Discharge"
-                            class="bento-img">
+                        <a href="assets/images/IMG_3983.MP4" data-fancybox="bento-gallery" data-caption="Zero Discharge &mdash; No chemical run-off" class="bento-eye-btn" aria-label="View Video">
+                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </a>
+                        <video autoplay muted loop playsinline class="bento-img"
+                            poster="assets/images/projects/commercial-iavs-farm/IMG_0151.jpg">
+                            <source src="assets/images/IMG_3983.MP4" type="video/mp4">
+                        </video>
                         <div class="bento-content">
                             <h4 class="h6 font-heading text-white mb-1">Zero Discharge</h4>
                             <p class="small mb-0 opacity-75" style="font-size: 0.75rem;">No chemical run-off</p>
                         </div>
                     </div>
-                    <!-- Item 3: Tall Pillar -->
+                    <!-- Item 3: Tall Pillar (Image) -->
                     <div class="bento-item bento-tall">
+                        <a href="assets/images/projects/commercial-iavs-farm/IMG_0160.jpg" data-fancybox="bento-gallery" data-caption="Circular Ecosystem &mdash; Nutrients and water entirely recycled into a self-sustaining system" class="bento-eye-btn" aria-label="View Image">
+                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </a>
                         <img src="assets/images/projects/commercial-iavs-farm/IMG_0160.jpg" alt="Circular Ecosystem"
                             class="bento-img">
                         <div class="bento-content">
@@ -204,6 +229,12 @@
                     </div>
                     <!-- Item 4: Square Tile (Video) -->
                     <div class="bento-item">
+                        <a href="assets/images/projects/commercial-iavs-farm/IMG_0765.mp4" data-fancybox="bento-gallery" data-caption="Climate Resilient &mdash; Year-round production" class="bento-eye-btn" aria-label="View Video">
+                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </a>
                         <video autoplay muted loop playsinline class="bento-img"
                             poster="assets/images/projects/commercial-iavs-farm/IMG_0158.jpg">
                             <source src="assets/images/projects/commercial-iavs-farm/IMG_0765.mp4" type="video/mp4">
@@ -213,9 +244,15 @@
                             <p class="small mb-0 opacity-75" style="font-size: 0.75rem;">Year-round production</p>
                         </div>
                     </div>
-                    <!-- Item 5: Wide Anchor -->
+                    <!-- Item 5: Wide Anchor (Image) -->
                     <div class="bento-item bento-wide">
-                        <img src="assets/images/projects/commercial-iavs-farm/IMG_0166.jpg"
+                        <a href="assets/images/projects/commercial-iavs-farm/2606.jpg" data-fancybox="bento-gallery" data-caption="Healthy Food & Planet &mdash; Safe, fresh, organic nutritious food while protecting the environment" class="bento-eye-btn" aria-label="View Image">
+                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </a>
+                        <img src="assets/images/projects/commercial-iavs-farm/2606.jpg"
                             alt="Healthy Food, Healthy Planet" class="bento-img">
                         <div class="bento-content">
                             <h4 class="h5 font-heading text-white mb-2">Healthy Food & Planet</h4>
@@ -236,13 +273,65 @@
     <script src="js/animations.js"></script>
     <script src="js/includes.js"></script>
 
+    <!-- Fancybox JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script>
+        Fancybox.bind('[data-fancybox="bento-gallery"]', {
+            Html: {
+                video: {
+                    autoplay: true,
+                    muted: true,
+                    playsinline: true,
+                    controls: true,
+                    loop: true
+                }
+            },
+            on: {
+                "reveal": (fancybox, slide) => {
+                    const el = slide.contentEl || slide.$el;
+                    if (el) {
+                        const videos = el.querySelectorAll('video');
+                        videos.forEach(v => {
+                            v.muted = true;
+                            v.volume = 0;
+                        });
+                    }
+                },
+                "Carousel.ready": (fancybox) => {
+                    document.querySelectorAll('.fancybox__container video').forEach(v => {
+                        v.muted = true;
+                        v.volume = 0;
+                    });
+                },
+                "Carousel.change": (fancybox) => {
+                    document.querySelectorAll('.fancybox__container video').forEach(v => {
+                        v.muted = true;
+                        v.volume = 0;
+                    });
+                }
+            }
+        });
+
+        // Delegate card click to eye button
+        document.querySelectorAll('.bento-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                if (!e.target.closest('.bento-eye-btn')) {
+                    const btn = item.querySelector('.bento-eye-btn');
+                    if (btn) btn.click();
+                }
+            });
+        });
+    </script>
+
     <!-- Bootstrap 5 JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmxc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <!-- Custom JS -->
     <script src="js/main.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script><script>new WOW().init();</script></body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <script>new WOW().init();</script>
+</body>
 
 </html>
 

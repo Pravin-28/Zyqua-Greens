@@ -238,79 +238,6 @@ a:hover {
   background-color: var(--color-bg);
 }
 
-.hero-home {
-  position: relative;
-  height: 100vh;
-  min-height: 500px;
-  width: 100%;
-  background-color: var(--color-green-tint);
-  /* fallback placeholder */
-  background-image: linear-gradient(to bottom,
-      rgba(0, 0, 0, 0.5) 0%,
-      rgba(0, 0, 0, 0.8) 100%),
-    url('../assets/images/projects/commercial-iavs-farm/IMG_4045.JPG');
-  /* Real farm photography goes here later */
-  background-size: cover;
-  background-position: top;
-  background-repeat: no-repeat;
-  display: flex;
-  align-items: flex-start;
-  padding-top: 30vh;
-  /* Pushes content down for a top-left feel, clearing navbar */
-}
-
-.hero-home .hero-content {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  max-width: var(--container-max);
-  margin-inline: auto;
-  padding-inline: var(--space-sm);
-}
-
-.hero-home .hero-title {
-  font-family: var(--font-heading);
-  font-size: 5rem;
-  color: #FFFFFF;
-  margin-bottom: 0.5rem;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-}
-
-.hero-home .hero-subtitle {
-  font-family: var(--font-body);
-  font-size: 1.5rem;
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 0;
-  max-width: 600px;
-}
-
-/* Responsive adjustments */
-@media (max-width: 991.98px) {
-  .hero-home .hero-title {
-    font-size: 4rem;
-  }
-
-  .hero-home .hero-subtitle {
-    font-size: 1.25rem;
-  }
-}
-
-@media (max-width: 767.98px) {
-  .hero-home {
-    padding-top: 25vh;
-  }
-
-  .hero-home .hero-title {
-    font-size: 3rem;
-  }
-
-  .hero-home .hero-subtitle {
-    font-size: 1.125rem;
-  }
-}
-
 /* ABOUT PAGE & SHARED COMPONENT STYLES */
 
 .page-content {
@@ -792,6 +719,10 @@ textarea:focus-visible {
   .card-soft {
     padding: 1.5rem;
   }
+  .hero-bg-video {
+  width: 200% !important;
+  left: 0 !important;
+  }
 }
 
 .btn-zg {
@@ -875,6 +806,42 @@ textarea:focus-visible {
 
 .bento-item:hover .bento-img {
   transform: scale(1.05);
+}
+
+.bento-eye-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.bento-eye-btn:hover,
+.bento-item:hover .bento-eye-btn {
+  background: var(--color-green);
+  border-color: var(--color-green);
+  color: #ffffff;
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+.bento-eye-btn svg {
+  width: 20px;
+  height: 20px;
+  display: block;
 }
 
 .bento-item::after {
@@ -1030,7 +997,7 @@ textarea:focus-visible {
 }
 
 .microgreens-swiper .swiper-pagination {
-  bottom: 8px !important;
+  bottom: -2px !important;
   z-index: 15;
 }
 
@@ -1126,15 +1093,36 @@ textarea:focus-visible {
 .hero-home {
   position: relative;
   min-height: 100vh;
+  min-height: 100dvh;
+  height: 100vh;
+  height: 100dvh;
   width: 100%;
   overflow: hidden;
   display: flex;
   align-items: center;
+  padding-top: 100px;
+  padding-bottom: 60px;
+  box-sizing: border-box;
+  margin: 0;
   background-color: #0b150c;
   background-image: url('../assets/images/home-bg.png');
   background-size: cover;
   background-position: center right 20%;
   background-repeat: no-repeat;
+}
+
+.hero-bg-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%) scale(1.08);
+  z-index: 0;
+  pointer-events: none;
 }
 
 .hero-overlay {
@@ -1150,6 +1138,7 @@ textarea:focus-visible {
     rgba(0, 0, 0, 0.22) 100%
   );
   z-index: 1;
+  pointer-events: none;
 }
 
 .hero-home .container-zg {
@@ -1159,6 +1148,13 @@ textarea:focus-visible {
 
 .hero-home .hero-subtitle {
   text-shadow: 0 2px 12px rgba(0, 0, 0);
+}
+
+@media (max-width: 767.98px) {
+  .hero-home {
+    padding-top: 90px;
+    padding-bottom: 70px;
+  }
 }
 
 /* Mobile Navbar Collapse Expanded */
