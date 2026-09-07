@@ -20,8 +20,8 @@
     <div id="site-navbar" class="navbar-transparent"></div>
 
     <main class="hero-home position-relative d-flex align-items-center">
-        <!-- Hero Background Video with Image Fallback -->
-        <video id="hero-bg-video" class="hero-bg-video" src="assets/images/hero-bg.mp4" autoplay muted defaultMuted loop playsinline webkit-playsinline preload="auto" poster="assets/images/home-bg.png" disableRemotePlayback disablePictureInPicture controlsList="nodownload nofullscreen noremoteplayback">
+        <!-- Hero Background Video with CSS Image Fallback on .hero-home -->
+        <video id="hero-bg-video" class="hero-bg-video" src="assets/images/hero-bg.mp4" autoplay muted defaultMuted loop playsinline webkit-playsinline preload="auto" x-webkit-airplay="deny" disableRemotePlayback disablePictureInPicture controlsList="nodownload nofullscreen noremoteplayback">
             <source src="assets/images/hero-bg.mp4" type="video/mp4">
         </video>
         <script>

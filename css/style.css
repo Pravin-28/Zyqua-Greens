@@ -720,8 +720,7 @@ textarea:focus-visible {
     padding: 1.5rem;
   }
   .hero-bg-video {
-  width: 200% !important;
-  left: 0 !important;
+    object-position: right center !important;
   }
 }
 
@@ -1125,6 +1124,12 @@ textarea:focus-visible {
   z-index: 0;
   pointer-events: none;
 }
+video::-webkit-media-controls,
+video::-webkit-media-controls-start-playback-button,
+video::-webkit-media-controls-play-button,
+video::-webkit-media-controls-panel,
+video::-webkit-media-controls-overlay-play-button,
+*::-webkit-media-controls-start-playback-button,
 .hero-bg-video::-webkit-media-controls,
 .hero-bg-video::-webkit-media-controls-start-playback-button,
 .hero-bg-video::-webkit-media-controls-play-button,
