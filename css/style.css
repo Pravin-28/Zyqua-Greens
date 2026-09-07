@@ -719,6 +719,10 @@ textarea:focus-visible {
   .card-soft {
     padding: 1.5rem;
   }
+  .hero-bg-video {
+  width: 200% !important;
+  left: 0 !important;
+  }
 }
 
 .btn-zg {
