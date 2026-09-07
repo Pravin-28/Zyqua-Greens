@@ -720,7 +720,8 @@ textarea:focus-visible {
     padding: 1.5rem;
   }
   .hero-bg-video {
-    object-position: right center !important;
+  width: 200% !important;
+  left: 0 !important;
   }
 }
 

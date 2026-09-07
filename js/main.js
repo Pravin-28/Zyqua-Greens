@@ -48,20 +48,21 @@ document.addEventListener("DOMContentLoaded", () => {
             playVideo();
         });
 
-        // Fallback on first touch/interaction for low power mode on iOS
+        // Robust unlock on ANY user gesture (touchstart, pointerdown, touchend, click, scroll) for iOS Low Power Mode
         const unlockOnTouch = () => {
             playVideo();
             if (!video.paused) {
-                window.removeEventListener("touchstart", unlockOnTouch);
-                window.removeEventListener("touchend", unlockOnTouch);
-                window.removeEventListener("click", unlockOnTouch);
-                window.removeEventListener("scroll", unlockOnTouch);
+                ['touchstart', 'touchend', 'pointerdown', 'click', 'scroll'].forEach(evt => {
+                    window.removeEventListener(evt, unlockOnTouch, { capture: true });
+                    document.removeEventListener(evt, unlockOnTouch, { capture: true });
+                });
             }
         };
-        window.addEventListener("touchstart", unlockOnTouch, { passive: true });
-        window.addEventListener("touchend", unlockOnTouch, { passive: true });
-        window.addEventListener("click", unlockOnTouch, { passive: true });
-        window.addEventListener("scroll", unlockOnTouch, { passive: true });
+
+        ['touchstart', 'touchend', 'pointerdown', 'click', 'scroll'].forEach(evt => {
+            window.addEventListener(evt, unlockOnTouch, { passive: true, capture: true });
+            document.addEventListener(evt, unlockOnTouch, { passive: true, capture: true });
+        });
     }
 
     // Handle Contact Form Auto-Select via URL Params
