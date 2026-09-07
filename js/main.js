@@ -3,55 +3,39 @@ console.log("Zyqua Greens main.js loaded");
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    // Robust Hero Background Video playback handler for iPhone / iOS / Mobile browsers
-    const heroVideo = document.querySelector('.hero-bg-video');
-    if (heroVideo) {
-        heroVideo.muted = true;
-        heroVideo.defaultMuted = true;
-        heroVideo.playsInline = true;
-        heroVideo.setAttribute('muted', '');
-        heroVideo.setAttribute('playsinline', '');
-        heroVideo.setAttribute('webkit-playsinline', '');
+    // Hero Video Autoplay handler for iPhone / Safari / Mobile
+    const video = document.getElementById("hero-bg-video");
+    if (video) {
+        video.muted = true;
+        video.setAttribute("muted", "");
+        video.setAttribute("playsinline", "");
+        video.setAttribute("webkit-playsinline", "");
 
-        const playHeroVideo = () => {
-            if (heroVideo.paused) {
-                const playPromise = heroVideo.play();
-                if (playPromise !== undefined) {
-                    playPromise.catch(() => {
-                        // Autoplay may be restricted (e.g. iOS Low Power Mode)
-                    });
-                }
+        const playVideo = () => {
+            const promise = video.play();
+            if (promise !== undefined) {
+                promise.catch(() => {
+                    // iPhone/Safari blocked autoplay.
+                });
             }
         };
 
-        // Attempt playback on various stages of loading
-        playHeroVideo();
-        heroVideo.addEventListener('loadedmetadata', playHeroVideo);
-        heroVideo.addEventListener('canplay', playHeroVideo);
-        heroVideo.addEventListener('loadeddata', playHeroVideo);
+        playVideo();
 
-        // Resume if user returns to tab/app on iPhone
-        document.addEventListener('visibilitychange', () => {
-            if (document.visibilityState === 'visible') {
-                playHeroVideo();
-            }
-        });
+        // Retry when Safari has loaded enough data
+        video.addEventListener("canplay", playVideo, { once: true });
+        video.addEventListener("loadedmetadata", playVideo, { once: true });
 
-        // Autoplay unlock fallback on first user interaction (touch, tap, scroll) for iOS Low Power Mode
-        const unlockMobileVideo = () => {
-            playHeroVideo();
-            if (!heroVideo.paused) {
-                window.removeEventListener('touchstart', unlockMobileVideo);
-                window.removeEventListener('touchend', unlockMobileVideo);
-                window.removeEventListener('click', unlockMobileVideo);
-                window.removeEventListener('scroll', unlockMobileVideo);
+        // Fallback on first touch/interaction for low power mode on iOS
+        const unlockOnTouch = () => {
+            playVideo();
+            if (!video.paused) {
+                window.removeEventListener("touchstart", unlockOnTouch);
+                window.removeEventListener("click", unlockOnTouch);
             }
         };
-
-        window.addEventListener('touchstart', unlockMobileVideo, { passive: true });
-        window.addEventListener('touchend', unlockMobileVideo, { passive: true });
-        window.addEventListener('click', unlockMobileVideo, { passive: true });
-        window.addEventListener('scroll', unlockMobileVideo, { passive: true });
+        window.addEventListener("touchstart", unlockOnTouch, { passive: true });
+        window.addEventListener("click", unlockOnTouch, { passive: true });
     }
 
     // Handle Contact Form Auto-Select via URL Params
